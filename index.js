@@ -8,14 +8,16 @@ const productRoutes = require("./routes/product");
 const authRouter = require('./routes/auth');
 app.use(express.json());
 app.use(express.static('public'));
+const specificationsRouter = require("./routes/specifications");
 
 
 
 // Connect to MongoDB using Mongoose
-mongoose.connect('mongodb+srv://phamduongrcvn2012:Zxc55555@cluster0.fxa0xjz.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://phamduongrcvn2012:Zxc55555@cluster0.fxa0xjz.mongodb.net/<database>?retryWrites=true&w=majority', {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 });
+
 
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
@@ -30,6 +32,7 @@ app.use('/products', productRoutes);
 
 app.use('/auth', authRouter);
 
+app.use("/specifications", specificationsRouter);
 
 // Start the server
 app.listen(port, () => {

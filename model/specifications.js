@@ -11,12 +11,7 @@ const SpecificationsSchema = new mongoose.Schema({
     content: {
       type: String,
     },
-    product: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
-
   });
   const Specifications = mongoose.model("Specifications", SpecificationsSchema);
   
-  module.exports =  Profile ;
+  module.exports =  Specifications ;

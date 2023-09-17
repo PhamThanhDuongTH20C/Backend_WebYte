@@ -24,7 +24,7 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     
   },
-  despription: {
+  imagebrand: {
     type: String,
     
   },
@@ -44,7 +44,7 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     
   },
-  technicalspecifications: {
+  accessory: {
     type: String,
    
   },
