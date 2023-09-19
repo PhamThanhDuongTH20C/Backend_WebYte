@@ -2,6 +2,9 @@ const User = require('../model/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 // Đăng ký tài khoản
+const dotenv = require('dotenv');
+dotenv.config();
+
 exports.register = async (req, res) => {
   const { username, password, email, fullname, isAdmin } = req.body;
 
@@ -16,7 +19,8 @@ exports.register = async (req, res) => {
     const newUser = new User({ username, password, email, fullname, isAdmin });
 
     // Tạo token JWT cho người dùng mới đăng ký
-    const token = jwt.sign({ username, isAdmin  }, process.env.secretKey, { expiresIn: '1h' });
+    const token = jwt.sign({ username, isAdmin }, process.env.SECRECKEY, { expiresIn: '1h' });
+
     newUser.token = token;
 
     await newUser.save();
